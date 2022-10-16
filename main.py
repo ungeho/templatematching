@@ -39,9 +39,9 @@ def main():
     cv2.circle(img , center , radius = 1 , color = (255, 255, 0) , thickness = 2)
 
 
-    # 一定の値kだけ高さを下げる（上下は下にいくほど数値が大きくなる）
-    k = 110
-    click_point = (int((top_left[0] + bottom_right[0])*0.5),int((top_left[1] + bottom_right[1])*0.5) + k)
+    # 定数Kの値だけ高さを下げる（上下は下にいくほど数値が大きくなる）
+    K = 110
+    click_point = (int((top_left[0] + bottom_right[0])*0.5),int((top_left[1] + bottom_right[1])*0.5) + K)
 
     # クリックしたいポイントに赤色の点を表示
     cv2.circle(img , click_point , radius = 1 , color = (0, 0, 255) , thickness = 2)
