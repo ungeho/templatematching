@@ -25,12 +25,27 @@ def main():
     # 検索結果（最大信頼度）の左上の座標を取得
     top_left = max_loc
 
-    # 検索結果の右下の座標を取得
+    # 検索結果の右下の座標を取得?
     bottom_right = (top_left[0] + width, top_left[1] + height)
 
     # 検索対象画像内に、検索結果を長方形で描画
-    # 第4引数はRGB、第5引数は線の太さ
-    cv2.rectangle(img, top_left, bottom_right, (255, 255, 0), 2)
+    # 第4引数はB,G,R、第5引数は線の太さ
+    cv2.rectangle(img, top_left, bottom_right, color = (255, 255, 0), thickness = 2)
+
+    #中心の座標を求める
+    center = (int((top_left[0] + bottom_right[0])*0.5),int((top_left[1] + bottom_right[1])*0.5))
+
+    # 検索結果の中心に水色の点を表示
+    cv2.circle(img , center , radius = 1 , color = (255, 255, 0) , thickness = 2)
+
+
+    # 一定の値kだけ高さを下げる（上下は下にいくほど数値が大きくなる）
+    k = 110
+    click_point = (int((top_left[0] + bottom_right[0])*0.5),int((top_left[1] + bottom_right[1])*0.5) + k)
+
+    # クリックしたいポイントに赤色の点を表示
+    cv2.circle(img , click_point , radius = 1 , color = (0, 0, 255) , thickness = 2)
+
 
     # 画像を保存
     cv2.imwrite('img.png',img)
